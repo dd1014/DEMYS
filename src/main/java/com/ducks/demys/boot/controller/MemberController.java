@@ -22,4 +22,14 @@ public class MemberController {
 		Member member=memberService.getMemberByMEMBER_NUM(1);
 		return member;
 	}
+	
+	@RequestMapping("/mypage/myPage")
+	public String myPage(){
+		return "mypage/myPage";
+	}
+	@RequestMapping("/mypage/modify")
+	public String modify(){
+		return "mypage/modify";
+	}
+	
 }
