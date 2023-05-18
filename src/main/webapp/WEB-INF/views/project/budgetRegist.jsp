@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ include file="head.jsp" %>
+<%@ include file="../common/head.jsp" %>
 
 <style>
 /* p-main-body 고정 수정X, border만 씌워서 작업!! */
@@ -255,4 +255,4 @@
 
 	
 
-<%@ include file="foot.jsp" %>
+<%@ include file="../common/foot.jsp" %>
