@@ -140,7 +140,7 @@ public class MemberController {
 	@PostMapping("/mypage/doModify")
 	public String doModify(HttpSession session, Member member, int MEMBER_NUM,String MEMBER_ID,String MEMBER_PW,
 			String MEMBER_PHONE,String MEMBER_EMAIL) {
-
+		
 	
 	    memberService.modifyMember(member);
 

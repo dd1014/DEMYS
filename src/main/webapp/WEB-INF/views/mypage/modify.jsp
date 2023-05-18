@@ -110,7 +110,7 @@
 	<form name="Modiform" action="/mypage/doModify" method="post">
 
 		<div style="display:flex;justify-content:flex-end;margin-left:20px;width:87%;height:70px;padding-top:20px;">	
-				<button onclick="modify_submit();" id="modal_opne_btn"  style="font-size: 15px; width: 110px; height: 40px; background-color: #153A66; color: white; border-radius: 8px;margin-right:10px;">수정</button>
+				<button onclick="modify_submit();"  style="font-size: 15px; width: 110px; height: 40px; background-color: #153A66; color: white; border-radius: 8px;margin-right:10px;">수정</button>
 				<button style="font-size: 15px; width: 110px; height: 40px; background-color: #153A66; color: white; border-radius: 8px;">취소</button>
 		</div>
 	
