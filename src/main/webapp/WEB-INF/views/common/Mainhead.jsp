@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>DashBoard</title>
+
 <!-- 제이쿼리 불러오기 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -25,6 +26,9 @@
 <script src="/resource/common.js" defer="defer"></script>
 
 <!-- 토스트 UI 에디터 플러그인, UML -->
+
+
+
 
 
 <!-- 토스트 UI 라이브러리 불러오기 끝 -->

@@ -1,53 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="pageTitle" value="캘린더" />
-<%@ include file="../common/Mainhead.jsp"%>
-    <meta charset="utf-8" />
-    <link href="../resource/fullcalendar-5.11.5/lib/main.min.css" rel="stylesheet" />
-    <script src="../resource/fullcalendar-5.11.5/lib/main.min.js"></script>
-    <link rel="stylesheet" href='../resource/vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='../resource/vendor/css/bootstrap-datetimepicker.min.css' />
-<!--    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/locales-all.js"></script> -->
- 
-<!--   	<link href="../resource/css/fullcalendar/fullcalendar.css" rel="stylesheet" />
- --> 
- 
- <!-- 풀캘린더 사이드 있는거임 걍 드래그해서 일정 등록가능 -->
- 
+<%@include file="../common/Mainhead.jsp"%>
+<!-- fullcalendar 설정관련 script -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+<script	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+
+<!-- fullcalendar 언어 설정관련 script -->
+<script
+	src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+<link rel="stylesheet" href="../resource/css/calendar/caln.css" />
+
 <style>
 .fc-event{
 	margin-top:5px;
 	cursor:move;
-} 	
+} 
 
 #calendar{
-	height:600px;
-	min-height:500px;
-	margin-top:20px;
-}	
+height:500px;
+min-height:600px;
+width:80%;
+float:right;
+margin-top:50px;
+}
 </style>
 
-  </head>
-  <body>
-  	
-  	
-  	
-  	
-  	
-  	
-  	 
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	 <div id='external-events' style="margin-top:20px;float:left;width:15%;padding-right:30px;padding-left:20px;">
+	 <div id='external-events' style="margin-top:50px;float:left;width:20%;padding-right:30px;padding-left:20px;">
     <p>
       <strong>드래그로 달력에 표시</strong>
     </p>
@@ -66,117 +46,36 @@
     </p>
     
     <!-- DB에 저장하기위해서는 전체저장이 필요하다 -->
+    <div class="button_all">
     <div>
-    	<button onclick="allSave();" style="cursor:pointer;width:110px; height:40px; background-color:#ccc;">전체 저장</button>
-    </div>
+    	<button onclick="allSave();" style="cursor:pointer;width:100px; height:35px; background-color:#ccc;">전체 저장</button>
     
+		<button class="add-button" type="button" onclick="click_add();">일정등록</button>
+	</div>
+ 	</div>
   </div>
-  	
-  	  <!-- 일정 추가 MODAL -->
-        <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-allDay">하루종일</label>
-                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox">
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-title">일정명</label>
-                                <input class="inputModal" type="text" name="edit-title" id="edit-title"
-                                    required="required" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-start">시작</label>
-                                <input class="inputModal" type="text" name="edit-start" id="edit-start" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-end">끝</label>
-                                <input class="inputModal" type="text" name="edit-end" id="edit-end" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-type">구분</label>
-                                <select class="inputModal" type="text" name="edit-type" id="edit-type">
-                                    <option value="카테고리1">카테고리1</option>
-                                    <option value="카테고리2">카테고리2</option>
-                                    <option value="카테고리3">카테고리3</option>
-                                    <option value="카테고리4">카테고리4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-color">색상</label>
-                                <select class="inputModal" name="color" id="edit-color">
-                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
-                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
-                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
-                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
-                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
-                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
-                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
-                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
-                                    <option value="#495057" style="color:#495057;">검정색</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-desc">설명</label>
-                                <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
-                                    id="edit-desc"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer modalBtnContainer-addEvent">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                        <button type="button" class="btn btn-primary" id="save-event">저장</button>
-                    </div>
-                    <div class="modal-footer modalBtnContainer-modifyEvent">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
-                        <button type="button" class="btn btn-primary" id="updateEvent">저장</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-  	
-  	
-  <div style="float:left;width:70%;margin-top:30px;margin-left:100px;">
-    <div id='calendar'></div>
-  </div>
-  
-   
- 
- 
-  <script>
- 	 var calendar = null;
-  
- 	 document.addEventListener('DOMContentLoaded', function() {
-	    var Calendar = FullCalendar.Calendar;
-	    var Draggable = FullCalendar.Draggable;
+<section class="mt-5">
+	<div class="container mx-auto px-3">
+		<div id='calendar'></div>
+		
+	</div>
+</section>
 
-	    var containerEl = document.getElementById('external-events');
-	    var calendarEl = document.getElementById('calendar');
-	    var checkbox = document.getElementById('drop-remove');
+<script>
+	var calendar = null;
 
-	    // initialize the external events
+
+	document.addEventListener('DOMContentLoaded', function() {
+		
+		var Draggable = FullCalendar.Draggable;
+		var calendarEl = document.getElementById('calendar');
+		var containerEl = document.getElementById('external-events');
+		var checkbox = document.getElementById('drop-remove');
+		
+		
+		 // initialize the external events
 	    // -----------------------------------------------------------------
 
 	    new Draggable(containerEl, {
@@ -187,53 +86,62 @@
 	        };
 	      }
 	    });
-
-	    // initialize the calendar
-	    // -----------------------------------------------------------------
-
-	    calendar = new Calendar(calendarEl, {
-	      headerToolbar: {
-	        left: 'prev,next today',
-	        center: 'title',
-	        right: 'dayGridMonth,timeGridWeek'
-	      },
-	      editable: true, //수정가능여부 false로바꾸면 이벤트 드래그후 재배정불가 true상태여야 변경이가능
-	      droppable: true, // this allows things to be dropped onto the calendar
-	      drop: function(info) {
-	        // is the "remove after drop" checkbox checked?
-	        if (checkbox.checked) {
-	          // if so, remove the element from the "Draggable Events" list
-	          info.draggedEl.parentNode.removeChild(info.draggedEl);
-	        }
-	      },
-	      locale:'ko',
-	      dateClick : function(info) {
-				
-	    	  $('#eventModal').modal('show');
-
-			},
-			eventClick : function() {
-
-				alert('일정 클릭!');
-
-			}, 
-	    });
 		
+		
+		
+		$.get('../calendar/getCalendar', {
+			isAjax : 'Y',
+			dataType : "json"
+		}, function(data) {
+			 calendar = new FullCalendar.Calendar(calendarEl, {
+				headerToolbar : {
+					left : 'prev,next today',
+					center : 'title',
+					right : 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+				},
+				businessHours: false, // 주말 선택여부
+				navLinks : true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+				editable : true, // 수정 가능
+				selectable : true,// 달력 일자 드래그 설정가능
+				locale : 'ko', // 한국어 설정
+				nowIndicator : true, // 현재 시간 마크
+				dayMaxEvents : true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)				
+				events : data,
+				select : function(arg) { // 달력 칸 선택시 : add event
+					var title = prompt('Event Title:');
+					if (title) {
+						calendar.addEvent({
+							title : title,
+							start : arg.start,
+							end : arg.end,
+							allDay : arg.allDay
+						})
+					}
+					calendar.unselect();
+				},
+				/* eventClick : function(arg) { // 해당 이벤트 클릭 시 : remove event
+					if (confirm('일정을 삭제하시겠습니까?')) {
+						$.post('../caln/doDeleteSchedule', {
+							id : arg.event.id
+						}, function(data) {
+							if (data.success) {
+								arg.event.remove();
+								alert(data.msg);
+							} else {
+								if (data.msg) {
+									alert(data.msg);
+								}
+							}
 
-		// 데이터 삽입방식
-
-		calendar.addEvent({'title':'프로젝트', 'start':'2023-05-16T15:00'});
-
-		calendar.addEvent({'title':'프로젝트', 'start':'2023-05-18T22:00'});
-
-		calendar.addEvent({'title':'개인업무', 'start':'2023-05-20T09:00'});
-
-	    
-	    
-	    calendar.render();
-	  });
-  
- 	 //데이터를 db에 저장하려면 1. 전체이벤트 데이터 추출 2. ajax로 서버에 전송
+						}, 'json');
+					}
+				} */
+			});
+			calendar.render();
+		}, 'json');
+	});
+	
+	 //데이터를 db에 저장하려면 1. 전체이벤트 데이터 추출 2. ajax로 서버에 전송
  	function allSave()
  	 {
  	 var allEvent = calendar.getEvents();
@@ -255,11 +163,15 @@
  	 	var jsondata = JSON.stringify(events);
  	 	console.log(jsondata);
  	 	
- 	 	savedata(jsondata)
+ 	 	function savedata(data) {
+ 	 	  // 데이터를 서버로 전송하거나 필요한 작업을 수행하는 코드 작성
+ 	 	  console.log('Data saved:', data);
+ 	 	}
+ 	 	
  	 	{
  	 		$.ajax({
- 	 			type:'POST',
- 	 			url:"",
+ 	 			type:'GET',
+ 	 			url:"/calendar/getCalendar",
  	 			data:{"alldata": jsondata},
  	 			dataType: 'text',
  	 			async:false //동기방식
@@ -273,24 +185,5 @@
  	 	
  	 
  	}
- 	 
- 	
-
- 	 
-  
-  
-  
-    /*   document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
-          locale:'ko'
-        });
-        calendar.render();
-      }); */
-
-    </script>
-  
-  
-  </body>
-</html>
+	
+</script>
