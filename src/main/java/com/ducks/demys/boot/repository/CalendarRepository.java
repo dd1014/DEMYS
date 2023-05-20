@@ -5,10 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ducks.demys.boot.vo.Schedule;
+
 @Mapper
 public interface CalendarRepository {
 
-	public List<Map<String, Object>> getCalendarList();
+	public List<Schedule> getCalendarList(int MEMBER_NUM);
+	
+	public List<Schedule> registSchedule(Schedule schedule);
 
 	/*
 	 * public List<Schedule> getScheduleListByMEMBER_NUM(int MEMBER_NUM);
@@ -17,7 +21,7 @@ public interface CalendarRepository {
 	 * 
 	 * public int selectScheduleSequenceNextValue();
 	 * 
-	 * public void registSchedule(Schedule schedule);
+	 * 
 	 * 
 	 * public void modifySchedule(Schedule schedule);
 	 * 
