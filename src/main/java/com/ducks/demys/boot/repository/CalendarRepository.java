@@ -1,25 +1,28 @@
 package com.ducks.demys.boot.repository;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ducks.demys.boot.vo.Schedule;
+import com.ducks.demys.boot.vo.Calendar;
 
 @Mapper
 public interface CalendarRepository {
 
-	public List<Schedule> getCalendarList(int MEMBER_NUM);
+	public List<Calendar> getCalendarList(int MEMBER_NUM);
 	
-	public List<Schedule> registSchedule(Schedule schedule);
+	public void registGo(Calendar sc);
 
+	public int selectScheduleSequenceNextValue();
+
+	public int selectCalendarSequenceNextValue();
+	
 	/*
 	 * public List<Schedule> getScheduleListByMEMBER_NUM(int MEMBER_NUM);
 	 * 
 	 * public Schedule getScheduleBySC_NUM(int SC_NUM);
 	 * 
-	 * public int selectScheduleSequenceNextValue();
+	 * 
 	 * 
 	 * 
 	 * 

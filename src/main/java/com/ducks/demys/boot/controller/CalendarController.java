@@ -1,15 +1,15 @@
 package com.ducks.demys.boot.controller;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ducks.demys.boot.service.CalendarService;
-import com.ducks.demys.boot.vo.Schedule;
+import com.ducks.demys.boot.vo.Calendar;
 
 @Controller
 public class CalendarController {
@@ -41,20 +41,25 @@ public class CalendarController {
 
 	@RequestMapping("/calendar/getCalendar")
 	@ResponseBody
-	public List<Schedule> getCalendar() {
-		List<Schedule> calendar = calendarService.getCalendarList(2);
+	public List<Calendar> getCalendar() {
+		List<Calendar> calendar = calendarService.getCalendarList(2);
 		
 		return calendar;
 	}
 	
+	
+	
+	
 	@RequestMapping("/calendar/registCalendar")
 	@ResponseBody
-	public List<Schedule> registCalendar(Schedule schedule) {
-	    calendarService.registCalendar(schedule); // 일정 등록 서비스 메서드 호출
+	public void registCalendar(@RequestBody Calendar sc) {
+	    Calendar regsc=sc;
+
+	    // title, start, end 값을 활용하여 로직 수행
+	    calendarService.registCalendar(regsc); // scheduleService의 registCalendar 메서드 호출
 	    
-	    // 등록된 일정 목록을 가져온 후 반환
-	    List<Schedule> calendar = calendarService.getCalendarList(schedule.getMEMBER_NUM());
-	    return calendar;
+	    
+	    
 	}
 	
 	
