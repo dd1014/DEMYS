@@ -30,6 +30,8 @@ public class CalendarService {
 	        calendarRepository.registGo(sc);
 	    }
 
-	
+	public void removeCalendar(int SC_NUM) {
+		calendarRepository.removeCalendar(SC_NUM);
+	}
 	
 }

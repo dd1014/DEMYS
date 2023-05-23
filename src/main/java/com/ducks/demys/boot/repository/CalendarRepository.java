@@ -13,9 +13,9 @@ public interface CalendarRepository {
 	
 	public void registGo(Calendar sc);
 
-	public int selectScheduleSequenceNextValue();
-
 	public int selectCalendarSequenceNextValue();
+	
+	public void removeCalendar(int SC_NUM);
 	
 	/*
 	 * public List<Schedule> getScheduleListByMEMBER_NUM(int MEMBER_NUM);
@@ -28,7 +28,7 @@ public interface CalendarRepository {
 	 * 
 	 * public void modifySchedule(Schedule schedule);
 	 * 
-	 * public void removeSchedule(int SC_NUM);
+	 * 
 	 */
 	
 }
