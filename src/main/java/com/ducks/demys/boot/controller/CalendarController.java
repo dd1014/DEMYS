@@ -1,6 +1,8 @@
 package com.ducks.demys.boot.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,18 +12,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ducks.demys.boot.service.CalendarService;
+import com.ducks.demys.boot.service.MemberService;
 import com.ducks.demys.boot.service.ProjectsService;
 import com.ducks.demys.boot.vo.Calendar;
+import com.ducks.demys.boot.vo.Member;
 import com.ducks.demys.boot.vo.Projects;
 
 @Controller
 public class CalendarController {
 	public CalendarService calendarService;
 	public ProjectsService projectsService;
+	public MemberService memberService;
 
-	public CalendarController(CalendarService calendarService, ProjectsService projectsService) {
+	public CalendarController(CalendarService calendarService, ProjectsService projectsService,MemberService memberService) {
 		this.calendarService = calendarService;
 		this.projectsService = projectsService;
+		this.memberService = memberService;
 	}
 
 	@RequestMapping("/calendar/calendar")
@@ -82,13 +88,13 @@ public class CalendarController {
 	
 	@RequestMapping("/calendar/getModal_PJList")
 	@ResponseBody
-	public List<Projects> getModal_PJList() {
-		List<Projects> projectList = projectsService.getPJCalList();
-	    System.out.println(projectList); 
+	public List<Projects> getModal_PJList(Model model, @RequestParam("member_NUM")int MEMBER_NUM ) {
+		Member member = memberService.getMemberByMEMBER_NUM(MEMBER_NUM);
+		System.out.println("member: "+MEMBER_NUM);
+		List<Projects> projectList = projectsService.getPJCalList(MEMBER_NUM);
+		model.addAttribute("projectList",projectList);
+		System.out.println(projectList);
 	    return projectList;
 	}
-	
-	
-	
 	
 }

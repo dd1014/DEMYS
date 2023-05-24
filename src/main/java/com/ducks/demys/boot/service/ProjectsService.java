@@ -19,8 +19,9 @@ public class ProjectsService {
 	public List<Projects> getPJList(){
 		return projectsRepository.getPJList();
 	}
-	public List<Projects> getPJCalList(){
-		return projectsRepository.getPJCalList();
+	
+	public List<Projects> getPJCalList(int MEMBER_NUM){
+		return projectsRepository.getPJCalList(MEMBER_NUM);
 	}
 	public List<Projects> getPJListByMEMBER_NUM(int MEMBER_NUM){
 		return projectsRepository.getPJListByMEMBER_NUM(MEMBER_NUM);

@@ -191,6 +191,8 @@
 
   <div id="pj_modal" class="search_pj">
 <input type="hidden" name="MEMBER_NUM" value="2" />
+<%-- <input type="hidden" name="PJ_NUM" value="1" />
+<input type="hidden" name="PJ_NAME" value="${projects.PJ_NUM }" /> --%>
     <div class="modal_content">
           <div class="flex" style="background-color: #153A66;">
                 <div class="navbar text-neutral-content modal-head">
@@ -400,56 +402,54 @@ $(function() {
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>    
+<script type="text/x-handlebars-template"  id="calendar-template" >
+{{#each .}}
+        <tr data-calendar-num="{{pj_NUM}}">
+			<td>{{pj_NAME}}</td>
+		</tr>
+{{/each }}
+
+</script>
 
 <script>
 //모달안에서 프로젝트 선택 모달열기
 function searchPJ(){
 	 $(".search_pj").css('display',"block");
-	alert("프로젝트선택");
-	/* var SC_NAME = $("input[name=SC_NAME]").val();
-	var START = $("input[name=START]").val();
-	var END = $("input[name=END]").val();
-	var SC_STATUS = $("select[name=SC_STATUS]").val();
-	var SC_TYPE = $("select[name=SC_TYPE]").val();
-	var SC_IMP = $("select[name=SC_IMP]").val();
-	var SC_PLACE = $("input[name=SC_PLACE]").val();
-	var SC_CONTENT = $("input[name=SC_CONTENT]").val();
-	var PJ_NAME = $("input[name=PJ_NAME]").val();
-	var PJ_NUM = $("input[name=PJ_NUM]").val();
-
-	var data = {
-	    "sc_NAME": SC_NAME,
-	    "string_START": START,
-	    "string_END": END,
-	    "sc_STATUS": parseInt(SC_STATUS),
-	    "sc_TYPE": SC_TYPE,
-	    "sc_IMP": parseInt(SC_IMP),
-	    "sc_PLACE": SC_PLACE,
-	    "sc_CONTENT": SC_CONTENT,
-	    "pj_NAME": PJ_NAME,
-	    "pj_NUM": parseInt(PJ_NUM)
-	};
-	
- 	console.log(data);
-	alert(data);*/
+	 var MEMBER_NUM = $('input[name="MEMBER_NUM"]').val();
+	/*  var PJ_NUM = $('input[name="PJ_NUM"]').val();
+	 var PJ_NAME = $('input[name="PJ_NAME"]').val();  */
+	//alert(MEMBER_NUM);
 	
  	$.ajax({
 	    url: "getModal_PJList",
 	    type: "get",
 	    dataType: "json",
-	    success: function(data) {
-	    	console.log(data);
+	    data:{
+	    	"member_NUM":MEMBER_NUM,
+/* 	    	"pj_NUM":PJ_NUM,
+	    	"pj_NAME":PJ_NAME */
+	    },
+	    success: function(projectList) {
+	    	console.log(projectList);
 	    	alert("리스트 넘어옴");
-	        var projectList = data.projectList;
+	        var projectList = projectList;
 	        var table = $('#calendarList_view');
-	        table.empty();
+	      
 	        //alert('포문도나');
-
-	        for (var i = 0; i < projectList.length; i++) {
-	            var calendar = projectList[i];
-                var row = '<tr data-calendar-num="' + calendar.PJ_NUM + '"><td>' + calendar.PJ_NAME + '</td></tr>';
+			//console.log(projectList);
+	        /* for (var i = 0; i < projectList.length; i++) {
+                var row = '<tr data-calendar-num="' + projectList[i].getPJ_NUM() + '"><td>' + projectList[i].getPJ_NAME() + '</td></tr>';
                 table.append(row);
-	        }
+	        } */
+	        
+			
+	        let template = Handlebars.compile($("#calendar-template").html());
+	                 let html = template(projectList);
+	                 $('#calendarList_view').append(html);
+	        
+	        
+	        
  			table.find('tr').click(function(){
 				var PJ_NUM = $(this).data('calendar-num');
 				var PJ_NAME = $(this).find('td:first-child').text();
@@ -477,6 +477,12 @@ function searchPJ(){
 	}); 
 	
 } 
+
+
+
+
+
+
 
 function CLOSE_mODAL(){
 	   $(".search_pj").css('display', "none");
