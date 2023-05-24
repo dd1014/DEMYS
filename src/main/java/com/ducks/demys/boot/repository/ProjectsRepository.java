@@ -10,6 +10,7 @@ import com.ducks.demys.boot.vo.Projects;
 public interface ProjectsRepository {
 
 	public List<Projects> getPJList();
+	public List<Projects> getPJCalList();
 
 	public List<Projects> getPJListByMEMBER_NUM(int MEMBER_NUM);
 	

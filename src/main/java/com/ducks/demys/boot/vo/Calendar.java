@@ -28,7 +28,7 @@ public class Calendar {
 	private int TASKS_NUM;	
 	private String title;
 	
-	
+	private String PJ_NAME;
 
 
 

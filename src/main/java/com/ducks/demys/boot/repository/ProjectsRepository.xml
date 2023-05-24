@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ducks.demys.boot.repository.ProjectsRepository">
+	<sql id="search">
+		<if test="searchType == 'pn'.toString()">
+			and PJ_NAME like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'cn'.toString()">
+			and CT_NAME like '%'||#{keyword}||'%'
+		</if>
+	</sql>
+
+	<select id="getPJList" resultType="Projects">
+		select*
+		from(
+			SELECT rownum as rnum, PJListResult.*
+			FROM(
+				SELECT P.*, C.CT_NAME, M.MEMBER_NAME
+				FROM projects P
+				INNER JOIN contacts C ON P.CT_NUM = C.CT_NUM
+				INNER JOIN member M ON P.MEMBER_NUM = M.MEMBER_NUM
+				WHERE PJ_NUM IS NOT NULL
+				<include refid="search"/>
+				ORDER BY P.PJ_REGDATE DESC
+			) PJListResult
+		<![CDATA[
+			WHERE rownum <= #{endRow}
+		) WHERE rnum > #{startRow}
+		]]>
+	</select>
+	
+	<select id="getPJListCount" resultType="int">
+		SELECT count(*)
+		FROM projects P
+		INNER JOIN contacts C ON P.CT_NUM = C.CT_NUM
+		INNER JOIN member M ON P.MEMBER_NUM = M.MEMBER_NUM
+		WHERE PJ_NUM IS NOT NULL
+		<include refid="search" />
+	</select>
+	
+	<select id="getPJListByMEMBER_NUM" resultType="Projects">
+		SELECT *
+		FROM PROJECTS
+		WHERE MEMBER_NUM=#{MEMBER_NUM}
+		ORDER BY PJ_NUM DESC
+	</select>
+	<select id="getPJByPJ_NUM"  resultType="Projects">
+		SELECT *
+		FROM projects P
+		INNER JOIN contacts C ON P.CT_NUM = C.CT_NUM
+        INNER JOIN member M ON P.MEMBER_NUM = M.MEMBER_NUM
+		WHERE PJ_NUM IS NOT NULL AND PJ_NUM=#{PJ_NUM}
+	</select>
+	<select id="selectPJSequenceNextValue" resultType="int">
+		SELECT
+		PROJECTS_seq.nextVal
+		FROM DUAL
+	</select>
+	
+	<insert id="registPJ">
+		INSERT INTO
+		PROJECTS(PJ_NUM, PJ_NAME, PJ_STARTDATE, PJ_ENDDATE, PJ_IMP, PJ_CONTENT, PJ_TYPE, PJ_FIELD, PJ_GIT, PJ_PRICE, MEMBER_NUM, CT_NUM)
+		VALUES(#{PJ_NUM}, #{PJ_NAME},TO_DATE(#{STRING_STARTDATE}, 'YYYY-MM-DD'), TO_DATE(#{STRING_ENDDATE}, 'YYYY-MM-DD'),#{PJ_IMP},#{PJ_CONTENT},#{PJ_TYPE},#{PJ_FIELD},#{PJ_GIT},#{PJ_PRICE},#{MEMBER_NUM},#{CT_NUM})
+	</insert>
+	
+	<update id="modifyPJ">
+		UPDATE PROJECTS
+		SET
+		PJ_NAME=#{PJ_NAME},PJ_STARTDATE=#{PJ_STARTDATE},PJ_ENDDATE=#{PJ_ENDDATE},PJ_IMP=#{PJ_IMP},PJ_CONTENT=#{PJ_CONTENT},PJ_TYPE=#{PJ_TYPE},PJ_FIELD=#{PJ_FIELD},PJ_GIT=#{PJ_GIT},PJ_PRICE=#{PJ_PRICE},MEMBER_NUM=#{MEMBER_NUM},CT_NUM=#{CT_NUM},PJ_UPDATEDATE=SYSDATE
+		WHERE PJ_NUM=#{PJ_NUM}
+	</update>
+	<delete id="removePJ">
+		DELETE
+		FROM PROJECTS
+		WHERE PJ_NUM=#{PJ_NUM}
+	</delete>
+	
+	
+	<select id="getPJCalList" resultType="Projects">
+		SELECT * 
+		FROM PROJECTS
+		WHERE PJ_NUM=#{PJ_NUM}
+	</select>
+	
+	
+	
+	
+	
+</mapper>

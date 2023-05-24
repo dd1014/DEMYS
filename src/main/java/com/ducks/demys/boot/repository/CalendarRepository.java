@@ -10,12 +10,16 @@ import com.ducks.demys.boot.vo.Calendar;
 public interface CalendarRepository {
 
 	public List<Calendar> getCalendarList(int MEMBER_NUM);
+
+	public List<Calendar> getModal_PJList(int MEMBER_NUM);
 	
 	public void registGo(Calendar sc);
 
 	public int selectCalendarSequenceNextValue();
 	
 	public void removeCalendar(int SC_NUM);
+	
+	
 	
 	/*
 	 * public List<Schedule> getScheduleListByMEMBER_NUM(int MEMBER_NUM);

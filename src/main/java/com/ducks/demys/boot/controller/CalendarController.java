@@ -10,14 +10,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ducks.demys.boot.service.CalendarService;
+import com.ducks.demys.boot.service.ProjectsService;
 import com.ducks.demys.boot.vo.Calendar;
+import com.ducks.demys.boot.vo.Projects;
 
 @Controller
 public class CalendarController {
 	public CalendarService calendarService;
+	public ProjectsService projectsService;
 
-	public CalendarController(CalendarService calendarService) {
+	public CalendarController(CalendarService calendarService, ProjectsService projectsService) {
 		this.calendarService = calendarService;
+		this.projectsService = projectsService;
 	}
 
 	@RequestMapping("/calendar/calendar")
@@ -39,7 +43,8 @@ public class CalendarController {
 	 * 
 	 * jsonObj = new JSONObject(hash); jsonArr.add(jsonObj); } return jsonArr; }
 	 */
-
+	
+	//달력리스트조회
 	@RequestMapping("/calendar/getCalendar")
 	@ResponseBody
 	public List<Calendar> getCalendar() {
@@ -50,7 +55,7 @@ public class CalendarController {
 	
 	
 	
-	
+	//달력등록
 	@RequestMapping("/calendar/registCalendar")
 	@ResponseBody
 	public void registCalendar(@RequestBody Calendar sc) {
@@ -63,6 +68,7 @@ public class CalendarController {
 	    
 	}
 	
+	//달력삭제
 	@RequestMapping("/calendar/removeCalendar")
 	@ResponseBody
 	public void removeCalendar(@RequestParam("sc_NUM") int SC_NUM) {
@@ -74,7 +80,12 @@ public class CalendarController {
 	    
 	}
 	
-	
+	@RequestMapping("/calendar/getModal_PJList")
+	@ResponseBody
+	public void getModal_PJList(Model model) {
+	    List<Projects> projectList = projectsService.getPJCalList();
+	    model.addAttribute("projectList",projectList);
+	}
 	
 	
 	
