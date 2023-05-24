@@ -82,9 +82,10 @@ public class CalendarController {
 	
 	@RequestMapping("/calendar/getModal_PJList")
 	@ResponseBody
-	public void getModal_PJList(Model model) {
-	    List<Projects> projectList = projectsService.getPJCalList();
-	    model.addAttribute("projectList",projectList);
+	public List<Projects> getModal_PJList() {
+		List<Projects> projectList = projectsService.getPJCalList();
+	    System.out.println(projectList); 
+	    return projectList;
 	}
 	
 	

@@ -17,7 +17,7 @@ public class Projects {
 	private Date PJ_UPDATEDATE;
 	private int PJ_IMP;
 	private String PJ_CONTENT;
-	private int PJ_SATUS;
+	private int PJ_STATUS;
 	private int PJ_TYPE;
 	private String PJ_FIELD;
 	private String PJ_GIT;

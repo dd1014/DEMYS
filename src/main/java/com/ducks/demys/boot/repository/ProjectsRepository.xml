@@ -79,13 +79,9 @@
 	
 	
 	<select id="getPJCalList" resultType="Projects">
-		SELECT * 
-		FROM PROJECTS
-		WHERE PJ_NUM=#{PJ_NUM}
+		SELECT h.*, p.PJ_NAME
+        FROM PROJECTS p, PJHR h
+        WHERE p.PJ_NUM = h.PJ_NUM
+        and h.MEMBER_NUM = #{MEMBER_NUM}
 	</select>
-	
-	
-	
-	
-	
 </mapper>

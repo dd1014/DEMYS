@@ -305,7 +305,7 @@ $(function() {
 					nowIndicator : true,
 					dayMaxEvents : true,
 					select : function(info) {
-						var SC_NAME = prompt('일정을 입력해주세요.');
+						var SC_NAME = prompt('일정을 입력해주세요.'); //날짜선택해서 saveData에 저장후 등록하기
 						if (SC_NAME) {
 							var event = {
 								sc_NAME : SC_NAME,
@@ -433,7 +433,7 @@ function searchPJ(){
  	console.log(data);
 	alert(data);*/
 	
-/* 	$.ajax({
+ 	$.ajax({
 	    url: "getModal_PJList",
 	    type: "get",
 	    dataType: "json",
@@ -443,6 +443,7 @@ function searchPJ(){
 	        var projectList = data.projectList;
 	        var table = $('#calendarList_view');
 	        table.empty();
+	        //alert('포문도나');
 
 	        for (var i = 0; i < projectList.length; i++) {
 	            var calendar = projectList[i];
@@ -473,7 +474,7 @@ function searchPJ(){
 				});
 			});
 		}
-	}); */
+	}); 
 	
 } 
 
