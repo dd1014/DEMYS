@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <!-- //html 하단에 순서로 로드 -->
-<script src="js/flatpickr.js"></script>
+<!-- <script src="js/flatpickr.js"></script> -->
  
 <!-- //언어설정을 위한 로드 -->
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
@@ -38,7 +38,7 @@
 		</p>
 
 		<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-				<div class='fc-event-main'>프로젝트</div>
+				<div class='fc-event-main' >프로젝트</div>
 		</div>
 		<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
 				<div class='fc-event-main'>개인업무</div>
@@ -83,7 +83,7 @@
          </div>
          <div class="cts-title-sub">* 일정을 등록하세요.</div>
          
-         <form action="post" id="ScheduleForm">
+         <form id="ScheduleForm">
          <div style="margin-top:10px;"> 
          <div class="p-modal-serach regist_calendar">
             	<div class="col-xs-12" style="width:100%;">
@@ -120,9 +120,9 @@
               <!-- 프로젝트 선택 시 프로젝트 조회 버튼 -->
 		<div class="p-modal-search regist_calendar" style="display: none;">
 			<div class="col-xs-12" style="width:100%;margin-left:40px;">
-				<label class="col-xs-4" for="mo_project-name" style="font-weight:bold;float:left;width:30%;">프로젝트명</label>
-				<input class="inputModal" type="text" name="mo_project-name" id="mo_project-name" style="float:left;width:40%;border:1px solid #ccc;">
-				<button onclick="javascript:searchPJ();" id="project-search-button" style="border:1px solid #ccc;width:10%;">선택</button>
+				<label class="col-xs-4" for="PJ_NAME" style="font-weight:bold;float:left;width:30%;">프로젝트명</label>
+				<input readonly class="inputModal" type="text" name="PJ_NAME" id="PJ_NAME" style="float:left;width:40%;border:1px solid #ccc;">
+				<a href="javascript:searchPJ();" id="project-search-button" style="display:inline-block;border:1px solid #ccc;width:42px;height:26px;text-align: center;">선택</a>
 			</div>
 		</div>
          
@@ -212,7 +212,7 @@
             </table>
          </div>
          <div class="p-regi-modal-bts">
-                  <button id="modal_close_btn2" class="p-regi-modal-bt" onclick="CLOSE_mODAL();">닫기</button>
+                  <button id="modal_close_btn2" class="p-regi-modal-bt" onclick="CLOSE_mODAL();">선택완료</button>
                   <!-- MEMBER NUM, NAME값 받을 공간 -->
                   <div class="add_calendar_id" ></div>
             </div>
@@ -241,7 +241,7 @@ document.getElementById("SC_STATUS").addEventListener("change", function() {
     // 다른 옵션을 선택한 경우 프로젝트 입력란 숨김
     projectSearchContainer.style.display = "none";
   }
-});
+}); 
 
 
 //일정추가 모달열기
@@ -273,7 +273,7 @@ $(".timeSelector").flatpickr({
 <script>
 
 
-$(function() {//프로젝트선택시 프로젝트명 input보이기
+/* $(function() {//프로젝트선택시 프로젝트명 input보이기
 		$('#mo_sc_status').on('change', function() {
 			var selectedValue = $(this).val();
 			if (selectedValue === '1') {
@@ -282,10 +282,28 @@ $(function() {//프로젝트선택시 프로젝트명 input보이기
 				$('#projectNameContainer').hide();
 			}
 		});
-	});
+	}); */
 
 	$(function() {
+		
+		
 		var calendarEl = document.getElementById('calendar');
+		var Draggable = FullCalendar.Draggable;
+		var containerEl = document.getElementById('external-events');
+		var checkbox = document.getElementById('drop-remove'); 
+		
+		
+		 // initialize the external events
+	    // -----------------------------------------------------------------
+
+	     new Draggable(containerEl, {
+	      itemSelector: '.fc-event',
+	      eventData: function(eventEl) {
+	        return {
+	          title: eventEl.innerText
+	        };
+	      }
+	    }); 
 		var calendar = new FullCalendar.Calendar(
 				calendarEl,
 				{
@@ -409,10 +427,12 @@ $(function() {//프로젝트선택시 프로젝트명 input보이기
 <script>
 //모달안에서 프로젝트 선택 모달열기
 function searchPJ(){
+	console.log("1");
 	 $(".search_pj").css('display',"block");
+	 console.log("2");
 	 var MEMBER_NUM = $('input[name="MEMBER_NUM"]').val();
 	//alert(MEMBER_NUM);
-	
+	console.log("3");
 	 $.ajax({
 		    url: "getModal_PJList",
 		    type: "get",
@@ -427,7 +447,7 @@ function searchPJ(){
 		        let template = Handlebars.compile($("#calendar-template").html());
 		        let html = template(projectList);
 		        table.append(html);
-
+		        console.log("4");
 		        table.find('tr').click(function () {
 		            var PJ_NUM = $(this).data('calendar-num');
 		            var PJ_NAME = $(this).find('td:first-child').text();
@@ -456,7 +476,7 @@ function searchPJ(){
 		            $("#mo_project-name").attr("data-pj-num", PJ_NUM);
 
 		            // 모달 창 닫기
-		            $(".search_pj").css('display', "none");
+		           // $(".search_pj").css('display', "none");
 		        });
 		    }
 		}); 
@@ -465,5 +485,33 @@ function searchPJ(){
 function CLOSE_mODAL(){
 	   $(".search_pj").css('display', "none");
 	}
+
+
+
+//1번모달에서 나머지 정보 입력후 최종 등록
+function addSchedule() {
+		alert('등록');
+		var jobForm = $('#ScheduleForm');
+		$.ajax({
+					type : "POST",
+					dataType: "json",
+					data : jobForm.serialize(),
+					url : "/calendar/registCalendar",
+					success : function(data) {
+						console.log(data);
+						alert('등록이 완료되었습니다.');
+					},
+					error : function(error) {
+						alert('error'+JSON.stringify(error));
+						
+					}
+
+				});
+
+	}
+
+
+
+
 
 </script>
