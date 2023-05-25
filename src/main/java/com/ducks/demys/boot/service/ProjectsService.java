@@ -43,6 +43,7 @@ public class ProjectsService {
 
 		return dataMap;
 	}
+<<<<<<< HEAD
 	public List<ProjectsForPrint> getPJListForDashboard(int MEMBER_NUM, int PJ_IMP, String SORT){
 		return projectsRepository.getPJListForDashboard(MEMBER_NUM, PJ_IMP, SORT);
 	}
@@ -54,10 +55,13 @@ public class ProjectsService {
 	public List<Projects> getPJListOrderByPJ_ENDDATE(){
 		return projectsRepository.getPJListOrderByPJ_ENDDATE();
 	}
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	
 	public List<Projects> getPJCalList(int MEMBER_NUM){
 		return projectsRepository.getPJCalList(MEMBER_NUM);
 	}
+<<<<<<< HEAD
 	
 	public int getPJListCount() {
 		return projectsRepository.getPJListCount();
@@ -65,6 +69,10 @@ public class ProjectsService {
 	
 	public int getPJListSTATUSCount(int PJ_STATUS) {
 		return projectsRepository.getPJListSTATUSCount(PJ_STATUS);
+=======
+	public List<Projects> getPJListByMEMBER_NUM(int MEMBER_NUM){
+		return projectsRepository.getPJListByMEMBER_NUM(MEMBER_NUM);
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	}
 
 	public Projects getPJByPJ_NUM(int PJ_NUM){

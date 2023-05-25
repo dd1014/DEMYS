@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
 .p-regist-view{
+<<<<<<< HEAD
 	padding:110px 80px;
+=======
+	padding:60px 140px;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	width:100%;
 	height:100%;
 }
@@ -78,7 +82,11 @@
 .p-reg-select{
 	min-height: 35px;
     height: 35px;
+<<<<<<< HEAD
     width: 30%;
+=======
+    width: 45%;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
     text-align:center;
 }
 .p-reg-select>option:first-child{

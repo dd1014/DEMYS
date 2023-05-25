@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ include file="../common/mainhead.jsp"%>
+=======
+
+
+
+
+
+<%@ include file="../common/Mainhead.jsp"%>
+
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 
 <style>
 #modal {
@@ -80,8 +91,20 @@
 </style>
 
 
+<<<<<<< HEAD
 <!-- 모달창  -->
 
+=======
+
+
+<!-- 모달창  -->
+
+
+
+
+
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	
 <div style="margin:0 auto; height: 955px; width:70%;">
 	
@@ -126,13 +149,22 @@
                   <input name="MEMBER_PIC" id="MEMBER_PIC" type="hidden" value="${member.MEMBER_PIC }" >
                </div>
 					
+<<<<<<< HEAD
+=======
+		
+
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 				
 						<!-- 프로필 사진 -->
 						<div class="col-sm-6 grid-rows-1">
 							
 						</div>
+<<<<<<< HEAD
 					
 					
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 						
 							<div style="margin:10px;float:left;width:40%;">
 							
@@ -284,7 +316,11 @@
 										</div>
 										&nbsp;&nbsp;&nbsp;
 										<!-- 직책 정보칸 -->
+<<<<<<< HEAD
 										<div style="border:1px solid #ccc;margin-left:100px; border-radius:8px;line-height:35px; height: 35px;pointer-events: none; width: 110%; background-color: #E7E7E7; ">
+=======
+										<div style="border:1px solid #ccc;margin-left:100px; border-radius:8px; line-height:35px;height: 35px;pointer-events: none; width: 110%; background-color: #E7E7E7; ">
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 												&nbsp;&nbsp;
 												
 											<c:if test="${member.MEMBER_AUTHORITY eq 1}">
@@ -308,7 +344,11 @@
 										</div>
 										&nbsp;&nbsp;&nbsp;
 										<!-- 직급 정보칸 -->
+<<<<<<< HEAD
 										<div id="mem_po" style="border:1px solid #ccc;margin-left:100px; border-radius:8px; line-height:35px;height: 35px;pointer-events: none; width: 110%; background-color: #E7E7E7; ">
+=======
+										<div style="border:1px solid #ccc;margin-left:100px; border-radius:8px; line-height:35px;height: 35px;pointer-events: none; width: 110%; background-color: #E7E7E7; ">
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 											&nbsp;&nbsp;
 											
 											<c:if test="${member.MEMBER_POSITION eq 1}">
@@ -340,6 +380,7 @@
 <script>
 
 
+<<<<<<< HEAD
 
 function modify_submit(){
 	   alert("수정이 완료되었습니다.");
@@ -347,6 +388,13 @@ function modify_submit(){
 	   
 	   form.submit();
 
+=======
+function modify_submit(){
+	   //alert("modify btn click");
+	   var form = $('form[name="Modiform"]');
+	   
+	   form.submit();
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	}
 	
 	
@@ -372,6 +420,7 @@ function check_pw() {
 
 
 
+<<<<<<< HEAD
 
 
 //doModify실행후에도 mypage에서 값나오게하기
@@ -398,6 +447,26 @@ if (member.MEMBER_POSITION === 1) {
 } else if (member.MEMBER_POSITION === 3) {
     authorityInfo.innerHTML = '책임';
 }
+=======
+$(document).ready(function(){
+      var fileTarget = $('.filebox .upload-hidden');
+
+        fileTarget.on('change', function(){
+            if(window.FileReader){
+                var filename = $(this)[0].files[0].name;
+            } else {
+                var filename = $(this).val().split('/').pop().split('\\').pop();
+            }
+
+            $(this).siblings('.upload-name').val(filename);
+        });
+    }); 
+
+
+
+
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 
 
 

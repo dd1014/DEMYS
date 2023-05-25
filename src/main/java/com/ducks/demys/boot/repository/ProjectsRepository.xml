@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ducks.demys.boot.repository.ProjectsRepository">
+<<<<<<< HEAD
 	<sql id="mainsearch">
 		<if test="PJ_IMP != null and PJ_IMP != 0">
 			WHERE PROJECTS.PJ_IMP LIKE '%'||#{PJ_IMP}||'%' 
@@ -21,6 +22,8 @@
 		</if>
 	</sql>
 	
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	<sql id="search">
 		<if test="searchType == 'pn'.toString()">
 			and PJ_NAME like '%'||#{keyword}||'%'
@@ -29,6 +32,7 @@
 			and CT_NAME like '%'||#{keyword}||'%'
 		</if>
 	</sql>
+<<<<<<< HEAD
 	
 	<select id="getPJListForDashboard" resultType="ProjectsForPrint">
 	select *
@@ -59,6 +63,9 @@
 		ORDER BY PJ_ENDDATE DESC
 	</select> 
 	
+=======
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	<select id="getPJList" resultType="Projects">
 		select*
 		from(
@@ -78,6 +85,7 @@
 		]]>
 	</select>
 	
+<<<<<<< HEAD
 <!-- 	<select id="getPJListByMEMBER_NUM" resultType="Projects">
 		SELECT *
 		FROM PROJECTS
@@ -85,6 +93,8 @@
 		ORDER BY PJ_NUM DESC
 	</select> -->
 	
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	<select id="getPJListCount" resultType="int">
 		SELECT count(*)
 		FROM projects P
@@ -94,6 +104,7 @@
 		<include refid="search" />
 	</select>
 	
+<<<<<<< HEAD
 	<select id="getPJListSTATUSCount" resultType="int">
 		SELECT COUNT(*)
 		FROM PROJECTS
@@ -101,25 +112,60 @@
 	</select>
 	
 	<select id="getPJByPJ_NUM" resultType="Projects">
+=======
+	<select id="getPJListByMEMBER_NUM" resultType="Projects">
+		SELECT *
+		FROM PROJECTS
+		WHERE MEMBER_NUM=#{MEMBER_NUM}
+		ORDER BY PJ_NUM DESC
+	</select>
+	<select id="getPJByPJ_NUM"  resultType="Projects">
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 		SELECT *
 		FROM projects P
 		INNER JOIN contacts C ON P.CT_NUM = C.CT_NUM
         INNER JOIN member M ON P.MEMBER_NUM = M.MEMBER_NUM
 		WHERE PJ_NUM IS NOT NULL AND PJ_NUM=#{PJ_NUM}
 	</select>
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	<select id="selectPJSequenceNextValue" resultType="int">
 		SELECT
 		PROJECTS_seq.nextVal
 		FROM DUAL
 	</select>
 	
+<<<<<<< HEAD
+=======
+	<insert id="registPJ">
+		INSERT INTO
+		PROJECTS(PJ_NUM, PJ_NAME, PJ_STARTDATE, PJ_ENDDATE, PJ_IMP, PJ_CONTENT, PJ_TYPE, PJ_FIELD, PJ_GIT, PJ_PRICE, MEMBER_NUM, CT_NUM)
+		VALUES(#{PJ_NUM}, #{PJ_NAME},TO_DATE(#{STRING_STARTDATE}, 'YYYY-MM-DD'), TO_DATE(#{STRING_ENDDATE}, 'YYYY-MM-DD'),#{PJ_IMP},#{PJ_CONTENT},#{PJ_TYPE},#{PJ_FIELD},#{PJ_GIT},#{PJ_PRICE},#{MEMBER_NUM},#{CT_NUM})
+	</insert>
+	
+	<update id="modifyPJ">
+		UPDATE PROJECTS
+		SET
+		PJ_NAME=#{PJ_NAME},PJ_STARTDATE=#{PJ_STARTDATE},PJ_ENDDATE=#{PJ_ENDDATE},PJ_IMP=#{PJ_IMP},PJ_CONTENT=#{PJ_CONTENT},PJ_TYPE=#{PJ_TYPE},PJ_FIELD=#{PJ_FIELD},PJ_GIT=#{PJ_GIT},PJ_PRICE=#{PJ_PRICE},MEMBER_NUM=#{MEMBER_NUM},CT_NUM=#{CT_NUM},PJ_UPDATEDATE=SYSDATE
+		WHERE PJ_NUM=#{PJ_NUM}
+	</update>
+	<delete id="removePJ">
+		DELETE
+		FROM PROJECTS
+		WHERE PJ_NUM=#{PJ_NUM}
+	</delete>
+	
+	
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	<select id="getPJCalList" resultType="Projects">
 		SELECT h.*, p.PJ_NAME
         FROM PROJECTS p, PJHR h
         WHERE p.PJ_NUM = h.PJ_NUM
         and h.MEMBER_NUM = #{MEMBER_NUM}
 	</select>
+<<<<<<< HEAD
 	
 	<insert id="registPJ">
 		INSERT INTO
@@ -139,4 +185,6 @@
 		FROM PROJECTS
 		WHERE PJ_NUM=#{PJ_NUM}
 	</delete>
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 </mapper>

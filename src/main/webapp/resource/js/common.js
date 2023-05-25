@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //팝업창들 띄우기
 //새로운 Window창을 Open할 경우 사용하는 함수 ( arg: 주소, 창타이틀, 넓이, 길이 )
 function OpenWindow(UrlStr, WinTitle, WinWidth, WinHeight){
@@ -156,3 +157,13 @@ function CLOSE_MODAL(){
 
 
 
+=======
+$('select[data-value]').each(function(index, el) {
+	const $el = $(el);
+	const defaultValue = $(el).attr('data-value').trim();
+	
+	if (defaultValue.length > 0) {
+		$el.val(defaultValue);
+	}
+})
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c

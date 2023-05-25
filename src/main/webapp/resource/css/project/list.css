@@ -89,11 +89,17 @@
 	margin-bottom:10px;
 	background-color:#ffffff;
 }
+<<<<<<< HEAD
 
 .p-list-box:hover{
 	border:4px solid #1ECAF0;
 }
 
+=======
+.p-list-box:hover{
+	border:4px solid #1ECAF0;
+}
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 .p-list-title{
 	font-size:18px;
 	font-weight:bold;
@@ -123,7 +129,11 @@
 }
 .p-list-pagination{
 	height:6%;
+<<<<<<< HEAD
 	/* border:1px solid red; */
+=======
+	border:1px solid red;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 }
 /* 줄바꿈X ...으로표시 */
 .ellipsis {

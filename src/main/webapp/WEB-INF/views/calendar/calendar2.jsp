@@ -3,7 +3,11 @@
 <%@page import="java.util.List"%>
 <%@page import="com.ducks.demys.boot.vo.Calendar"%>
 <c:set var="calendar" value="${calendar}" />
+<<<<<<< HEAD
 <%@include file="../common/mainhead.jsp"%>
+=======
+<%@include file="../common/Mainhead.jsp"%>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 <!-- fullcalendar 설정관련 script -->
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" ></script> -->

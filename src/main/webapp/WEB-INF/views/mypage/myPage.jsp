@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<<<<<<< HEAD
 <%@ include file="../common/mainhead.jsp"%>
+=======
+<%@ include file="../common/Mainhead.jsp"%>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
@@ -90,10 +94,14 @@
 				<div style="width:200px;font-size: 1.5rem; font-weight: bold;">마이페이지</div>
 
 				<div id="root" style="width: 90%; display: flex; justify-content: flex-end; margin-left: 20px; margin-bottom: 5px;">
+<<<<<<< HEAD
 				    <%-- 계정 수정 버튼 --%>
 				    <c:if test="${not hideModifyButton}">
 				        <button id="modal_opne_btn" style="font-size: 15px; width: 110px; height: 40px; background-color: #153A66; color: white; border-radius: 8px;">계정수정</button>
 				    </c:if>
+=======
+						<button id="modal_opne_btn" style="font-size: 15px; width: 110px; height: 40px; background-color: #153A66; color: white; border-radius: 8px;">계정수정</button>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 				</div>
 
 
@@ -315,15 +323,25 @@
 					return;
 				}
 				
+<<<<<<< HEAD
+=======
+				
+				
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 				MemberCheckPassword__submitDone = true;
 				form.submit();
 
 			}
 			
+<<<<<<< HEAD
 		
 			if (${not empty alertScript}) {
 		        ${alertScript}
 		    }
+=======
+			
+			
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 			
 			
 			

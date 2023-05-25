@@ -8,6 +8,10 @@ import lombok.ToString;
 
 @Setter
 @Getter
+<<<<<<< HEAD
+=======
+@ToString
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 public class Calendar {
 	
 	private int SC_NUM;

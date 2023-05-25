@@ -3,7 +3,11 @@ package com.ducks.demys.boot.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+<<<<<<< HEAD
 import org.springframework.data.repository.query.Param;
+=======
+import org.apache.ibatis.annotations.Param;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 
 import com.ducks.demys.boot.vo.Member;
 
@@ -26,6 +30,7 @@ public interface MemberRepository {
 	
 	public void removeMember(int MEMBER_NUM);
 	
+<<<<<<< HEAD
 	
 	//비밀번호 찾기
 
@@ -49,4 +54,8 @@ public interface MemberRepository {
 	public List<Member> getMemberByMEMBER_DEP(String MEMBER_DEP);
 
 
+=======
+	public void doJoin(String MEMBER_ID, String MEMBER_PW, String MEMBER_NAME, String MEMBER_PHONE, String MEMBER_EMAIL,
+			String MEMBER_DEP, int MEMBER_AUTHORITY, int MEMBER_STATUS, String MEMBER_PIC);
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 }

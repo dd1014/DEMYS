@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 document.getElementById("modal_opne_btn1").onclick = function() {
    document.getElementById("modal_1").style.display = "block";
 }
@@ -22,3 +23,12 @@ document.getElementById("modal_opne_btn").onclick = function() {
 document.getElementById("modal_close_btn").onclick = function() {
    document.getElementById("modal").style.display = "none";
 }
+=======
+   document.getElementById("modal_opne_btn").onclick = function() {
+      document.getElementById("modal").style.display = "block";
+   }
+
+   document.getElementById("modal_close_btn").onclick = function() {
+      document.getElementById("modal").style.display = "none";
+   }
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c

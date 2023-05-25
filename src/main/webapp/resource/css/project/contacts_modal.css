@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
 #modal_1, #modal_2 {
    display: none;
    position: relative;
@@ -12,6 +13,21 @@
 }
 /* 모달창 크기 조절 */
 #modal_1 .modal_content, #modal_2 .modal_content {
+=======
+#modal {
+   display: none;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   z-index: 1;
+}
+
+#modal h2 {
+   margin: 0;
+}
+/* 모달창 크기 조절 */
+#modal .modal_content {
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
    width: 600px;
    height: 500px; 
    top: 50%; 
@@ -22,7 +38,11 @@
    position: fixed;
 }
 /* 모달창 뒷 배경 */
+<<<<<<< HEAD
 #modal_1 .modal_layer, #modal_2 .modal_layer {
+=======
+#modal .modal_layer {
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
    position: fixed;
    top: 0;
    left: 0;
@@ -54,11 +74,14 @@
 	font-size:22px;
 	padding:5px;
 }
+<<<<<<< HEAD
 .cts-title-sub{
 	margin:5px 0;
 	color:#333333;
 	font-weight:bold;
 }
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 .p-modal-serach{
 	display:flex;
 	flex-direction:row;
@@ -75,11 +98,18 @@
 	background-color:#e7e7e7;
 	margin-bottom:10px;
 	padding:5px;
+<<<<<<< HEAD
 	overflow:auto;
 	overflow-x:hidden;
 }
 .cts-serch-list>table{
 	width:100%;
+=======
+}
+.cts-serch-list>table{
+	width:100%;
+	overflow:hidden;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 }
 .cts-serch-list tr{
 	height:40px;
@@ -88,6 +118,7 @@
 	background-color:white;
 	border:1px solid #aaaaaa;
 }
+<<<<<<< HEAD
 .cts-serch-list tr:hover{
 	background-color:#e7e7e7e7;
 }
@@ -98,6 +129,12 @@
 .cts-serch-list tr>td{
 	padding-left:30px;
 }
+=======
+.cts-serch-list tr>td:first-child{
+	font-weight:bold;
+}
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 .p-modal-searchbar{
 	width: 100%;
 	height:100%;

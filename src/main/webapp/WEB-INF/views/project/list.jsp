@@ -116,7 +116,10 @@
 
 </style>
 
-<%@ include file="../common/head.jsp" %>
+
+
+
+
 
 
 <div class="project-part">

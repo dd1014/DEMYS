@@ -10,10 +10,17 @@
 }
 
 #calendar {
+<<<<<<< HEAD
 	height: 800px;
 	min-height: 500px;
 	width: 90%;
 	margin-top:10px;
+=======
+	height: 600px;
+	min-height: 500px;
+	width: 80%;
+	margin-top: 50px;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	float:right;
 	
 }

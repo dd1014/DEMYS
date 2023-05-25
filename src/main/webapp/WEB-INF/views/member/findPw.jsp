@@ -20,6 +20,7 @@
 
 <!-- 사이트 공통 CSS -->
 <link rel="stylesheet" href="/resource/common.css" />
+<<<<<<< HEAD
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- 사이트 공통 JS -->
@@ -27,6 +28,10 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
+=======
+<!-- 사이트 공통 JS -->
+<script src="/resource/common.js" defer="defer"></script>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 </head>
 <style>
 
@@ -63,8 +68,13 @@ body {
 	height : 313px;
 }
 .main-title {
+<<<<<<< HEAD
 	padding-top : 20px;
 	padding-bottom : 20px;
+=======
+	padding-top : 10px;
+	padding-bottom : 10px;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	text-align : center;
 	font-weight: bold;
 	font-size: 1.3rem;
@@ -130,15 +140,33 @@ body {
 				<div class="navbar-logo">DEMYS PMS</div>
 			</div>	
 		</div>
+<<<<<<< HEAD
 		<form action="/member/doFindPw" method="post">
 	<div class="main">	
 		<div class="main-box">	
 			<div class="main-title">비밀번호 찾기</div>
+=======
+	<div class="main">	
+		<div class="main-box">	
+			<div class="main-title">비밀번호 찾기</div>
+				<div class="form-group">
+      				<label class="findPw-name">이름</label>
+      			<div class="input-group">
+        			<div class="input-group-prepend">
+        				<input type="text" placeholder="뭥미뭥미" class="input input-bordered"  id="" name="" />
+ 					</div>     			
+      			</div>
+      			</div>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
       			<div class="form-group">
       			<label class="findPw-name">아이디</label>
       			<div class="input-group">
         			<div class="input-group-prepend">
+<<<<<<< HEAD
         				<input type="text" placeholder="anjdal92" class="input input-bordered" onkeyup="checkReg(event)" id="MEMBER_ID" name="MEMBER_ID" required  />
+=======
+        				<input type="text" placeholder="anjdal92" class="input input-bordered"  id="" name="" />
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
  					</div>     			
       			</div>
       			</div>
@@ -146,28 +174,49 @@ body {
       			<label class="findPw-name">이메일</label>
       			<div class="input-group">
         			<div class="input-group-prepend">
+<<<<<<< HEAD
         				<input type="text" placeholder="anjdal92@naver.com" class="input input-bordered" onkeyup="checkReg(event)" id="MEMBER_EMAIL" name="MEMBER_EMAIL" required />
+=======
+        				<input type="text" placeholder="anjdal92@naver.com" class="input input-bordered"  id="" name="" />
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
  					</div>     			
       			</div>
 				</div>
 		<div class="card-footer row">						
+<<<<<<< HEAD
 			<button type="submit" id="findBtn" class="btn btn-se" style="margin-right: 10px;" onclick="sendVerificationCode();">찾 기</button>
+=======
+			<button type="button" id="findBtn"  onclick="find_go();" class="btn btn-se" style="margin-right: 10px;">확 인</button>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 			<div class="col-sm-4"></div>
 			<button type="button" id="cancelBtn" onclick="CloseWindow();" class="btn btn-se"  style="margin-left: 10px;">취 소</button>
 		</div>	
 		</div>
 					</div>
+<<<<<<< HEAD
 					</form>
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 				</div>
 
 
 <script>
 
+<<<<<<< HEAD
+=======
+function find_go(){
+	var form = $('form[role="form"]');		
+	form.submit();
+
+}
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 function CloseWindow(parentURL){
 	
 	window.opener.location.reload(true);		
 	window.close();
 }
+<<<<<<< HEAD
 
 function checkReg(event) {
 	  const regExp = /[^0-9a-zA-Z!@#$%^&*(),.?":{}|<>]/g;
@@ -235,6 +284,8 @@ function sendVerificationCode() {
 	}
 	
 
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
    </script>
 </body>
 
@@ -243,4 +294,7 @@ function sendVerificationCode() {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c

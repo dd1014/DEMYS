@@ -5,6 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
+=======
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -22,7 +27,10 @@
 <link rel="stylesheet" href="/resource/common.css" />
 <!-- 사이트 공통 JS -->
 <script src="/resource/common.js" defer="defer"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 </head>
 <style>
 
@@ -72,7 +80,11 @@ body {
 
 .input-bordered {
 	width: 100%;
+<<<<<<< HEAD
 	height:35px;
+=======
+	height:40px;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	border : 1px solid #aaaaaa;
 	font-size:0.8rem;
 }
@@ -96,7 +108,11 @@ body {
 	align-items: center;
 }
 .card-footer {
+<<<<<<< HEAD
 	padding-top : 10px;
+=======
+	padding-top : 25px;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 	margin-top: 0; 
 	border-top: none;
 	display:flex;
@@ -114,11 +130,19 @@ body {
     margin-right:10px;
 }
 .fa-gear {
+<<<<<<< HEAD
 	margin :10px auto;
 	color : #153A66;
 	font-size:60px;
 	width:80px;
 	height:60px;
+=======
+	margin :15px auto;
+	color : #153A66;
+	font-size:70px;
+	width:100px;
+	height:80px;
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 }
 </style>
 <body>
@@ -130,14 +154,22 @@ body {
 		</div>
 	<div class="main">	
 		<div class="main-box">	
+<<<<<<< HEAD
 			<form action="/member/doNewPw" method="POST" id="updataPw">
 			<div class="main-title"><i class="fa-solid fa-gear"></i></div>
 				<input type="hidden" id="VERTIFICATION_CODE" name="VERTIFICATION_CODE" value="${VERTIFICATION_CODE}">
+=======
+			<div class="main-title"><i class="fa-solid fa-gear"></i></div>
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 				<div class="form-group">
       				<label class="newPw-name">새 비밀번호</label>
       			<div class="input-group">
         			<div class="input-group-prepend">
+<<<<<<< HEAD
         				<input type="password" class="input input-bordered"  id="newPassword" name="newPassword" required/>
+=======
+        				<input type="text" placeholder="0글자 영문자,숫자,특수문자 조합" class="input input-bordered"  id="" name="" />
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
  					</div>     			
       			</div>
       			</div>
@@ -145,6 +177,7 @@ body {
       			<label class="newPw-name">새 비밀번호 확인</label>
       			<div class="input-group">
         			<div class="input-group-prepend">
+<<<<<<< HEAD
         				<input type="password"  class="input input-bordered"  id="confirmPassword" name="confirmPassword" required/>
  					</div>     			
       			</div>
@@ -155,6 +188,17 @@ body {
 			<button type="button" id="cancelBtn" onclick="CloseWindow();" class="btn btn-se"  style="margin-left: 10px;">취 소</button>
 		</div>	
 		</form>
+=======
+        				<input type="text" placeholder="0글자 영문자,숫자,특수문자 조합" class="input input-bordered"  id="" name="" />
+ 					</div>     			
+      			</div>
+      			</div>
+		<div class="card-footer row">						
+			<button type="button" id="findBtn"  onclick="find_go();" class="btn btn-se" style="margin-right: 10px;">확 인</button>
+			<div class="col-sm-4"></div>
+			<button type="button" id="cancelBtn" onclick="CloseWindow();" class="btn btn-se"  style="margin-left: 10px;">취 소</button>
+		</div>	
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 		</div>
 					</div>
 				</div>
@@ -162,6 +206,7 @@ body {
 
 <script>
 
+<<<<<<< HEAD
 function updateAndClose() {
 	  var newPassword = $("#newPassword").val();
 	  var confirmPassword = $("#confirmPassword").val();
@@ -191,6 +236,14 @@ function updateAndClose() {
 	  });
 	}
 	
+=======
+function find_go(){
+	var form = $('form[role="form"]');		
+	form.submit();
+
+}
+
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
 function CloseWindow(parentURL){
 	
 	window.opener.location.reload(true);		
@@ -204,4 +257,7 @@ function CloseWindow(parentURL){
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ee467a43b319ae0c45171d5facfc425f61200c
