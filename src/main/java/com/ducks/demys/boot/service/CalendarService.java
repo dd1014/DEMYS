@@ -42,5 +42,10 @@ public class CalendarService {
 	public List<Calendar> getModal_PJList(int MEMBER_NUM) {
 		return calendarRepository.getModal_PJList(2);
     }
+
+	public void modifyCalendar(Calendar regsc) {
+		calendarRepository.modifyCalendar(regsc);
+		System.out.println("서비스:"+regsc);
+	}
 	
 }

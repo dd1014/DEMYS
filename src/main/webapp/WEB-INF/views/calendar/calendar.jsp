@@ -253,11 +253,6 @@ function openModal() {
 	   $(".modal_calendar").css('display', "none");
 	}
 
-
-
-
-	
-
 // 타임피커 생성
 var dateSelector = document.querySelector('.timeSelector');
 dateSelector.flatpickr();
@@ -278,7 +273,7 @@ $(".timeSelector").flatpickr({
 <script>
 
 
-$(function() {
+$(function() {//프로젝트선택시 프로젝트명 input보이기
 		$('#mo_sc_status').on('change', function() {
 			var selectedValue = $(this).val();
 			if (selectedValue === '1') {
@@ -324,37 +319,36 @@ $(function() {
 						if (confirm('일정을 삭제하시겠습니까?')) {
 							var SC_NUM = info.event.extendedProps.sc_NUM;
 							//alert(SC_NUM);
-							$
-									.ajax({
-										type : 'POST',
-										url : '/calendar/removeCalendar',
-										data : {
-											sc_NUM : SC_NUM
-										},
-										dataType : 'json',
-										contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-										success : function(data) {
-											if (data.success) {
-												info.event.remove();
+							$.ajax({
+									type : 'POST',
+									url : '/calendar/removeCalendar',
+									data : {
+										sc_NUM : SC_NUM
+									},
+									dataType : 'json',
+									contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+									success : function(data) {
+										if (data.success) {
+											info.event.remove();
+											alert(data.msg);
+										} else {
+											if (data.msg) {
 												alert(data.msg);
-											} else {
-												if (data.msg) {
-													alert(data.msg);
-												}
 											}
-										},
-										error : function(xhr, status, error) {
-											alert('삭제가 완료되었습니다. ');
-											window.location.reload();
 										}
-									});
+									},
+									error : function(xhr, status, error) {
+										alert('삭제가 완료되었습니다. ');
+										window.location.reload();
+									}
+								});
 						}
 					},
+					
 					//달력에 리스트 출력
 					events : function(info, successCallback, failureCallback) {
 						var url = "/calendar/getCalendar";
-						$
-								.ajax({
+						$.ajax({
 									type : 'GET',
 									cache : false,
 									url : url,
@@ -401,7 +395,7 @@ $(function() {
 </script>
 
 
-
+<!-- handlebars 사용 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>    
 <script type="text/x-handlebars-template"  id="calendar-template" >
 {{#each .}}
@@ -417,77 +411,59 @@ $(function() {
 function searchPJ(){
 	 $(".search_pj").css('display',"block");
 	 var MEMBER_NUM = $('input[name="MEMBER_NUM"]').val();
-	/*  var PJ_NUM = $('input[name="PJ_NUM"]').val();
-	 var PJ_NAME = $('input[name="PJ_NAME"]').val();  */
 	//alert(MEMBER_NUM);
 	
- 	$.ajax({
-	    url: "getModal_PJList",
-	    type: "get",
-	    dataType: "json",
-	    data:{
-	    	"member_NUM":MEMBER_NUM,
-/* 	    	"pj_NUM":PJ_NUM,
-	    	"pj_NAME":PJ_NAME */
-	    },
-	    success: function(projectList) {
-	    	console.log(projectList);
-	    	alert("리스트 넘어옴");
-	        var projectList = projectList;
-	        var table = $('#calendarList_view');
-	      
-	        //alert('포문도나');
-			//console.log(projectList);
-	        /* for (var i = 0; i < projectList.length; i++) {
-                var row = '<tr data-calendar-num="' + projectList[i].getPJ_NUM() + '"><td>' + projectList[i].getPJ_NAME() + '</td></tr>';
-                table.append(row);
-	        } */
-	        
-			
-	        let template = Handlebars.compile($("#calendar-template").html());
-	                 let html = template(projectList);
-	                 $('#calendarList_view').append(html);
-	        
-	        
-	        
- 			table.find('tr').click(function(){
-				var PJ_NUM = $(this).data('calendar-num');
-				var PJ_NAME = $(this).find('td:first-child').text();
-				
-				var input_pjnum = '<input id="pj_num" type="hidden" value="'+PJ_NUM +'" />';
-				var input_pjname = '<input id="pj_name" type="hidden" value="'+PJ_NAME +'" />';
+	 $.ajax({
+		    url: "getModal_PJList",
+		    type: "get",
+		    dataType: "json",
+		    data: {
+		        "member_NUM": MEMBER_NUM,
+		    },
+		    success: function (projectList) {
+		        var table = $('#calendarList_view');
+		        table.empty();
 
-		 		var addCalendarId = $('.add_calendar_id');
+		        let template = Handlebars.compile($("#calendar-template").html());
+		        let html = template(projectList);
+		        table.append(html);
 
-				if (addCalendarId.length) {
-					addCalendarId.empty();
-				}
-				addCalendarId.append(input_pjnum);
-				addCalendarId.append(input_pjname);
-				
-				table.find('tr>td:last-child').each(function(){
-					if($(this).text() == PJ_NAME){
-						$(this).parent('tr').css('background-color', "#e7e7e7e7");
-					}else{
-						$(this).parent('tr').css('background-color', "#ffffff");
-					}
-				});
-			});
-		}
-	}); 
+		        table.find('tr').click(function () {
+		            var PJ_NUM = $(this).data('calendar-num');
+		            var PJ_NAME = $(this).find('td:first-child').text();
+
+		            var input_pjnum = '<input id="pj_num" type="hidden" value="' + PJ_NUM + '" />';
+		            var input_pjname = '<input id="pj_name" type="hidden" value="' + PJ_NAME + '" />';
+
+		            var addCalendarId = $('.add_calendar_id');
+
+		            if (addCalendarId.length) {
+		                addCalendarId.empty();
+		            }
+		            addCalendarId.append(input_pjnum);
+		            addCalendarId.append(input_pjname);
+
+		            table.find('tr>td:last-child').each(function () {
+		                if ($(this).text() == PJ_NAME) {
+		                    $(this).parent('tr').css('background-color', "#e7e7e7e7");
+		                } else {
+		                    $(this).parent('tr').css('background-color', "#ffffff");
+		                }
+		            });
+
+		            // 선택된 값이 input 요소에 들어가도록 처리
+		            $("#mo_project-name").val(PJ_NAME);
+		            $("#mo_project-name").attr("data-pj-num", PJ_NUM);
+
+		            // 모달 창 닫기
+		            $(".search_pj").css('display', "none");
+		        });
+		    }
+		}); 
 	
 } 
-
-
-
-
-
-
-
 function CLOSE_mODAL(){
 	   $(".search_pj").css('display', "none");
 	}
 
 </script>
-
-

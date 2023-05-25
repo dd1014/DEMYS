@@ -1,8 +1,6 @@
 package com.ducks.demys.boot.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +83,7 @@ public class CalendarController {
 	    
 	    
 	}
-	
+	//일정추가 모달에서 프로젝트명 리스트조회
 	@RequestMapping("/calendar/getModal_PJList")
 	@ResponseBody
 	public List<Projects> getModal_PJList(Model model, @RequestParam("member_NUM")int MEMBER_NUM ) {
@@ -95,6 +93,19 @@ public class CalendarController {
 		model.addAttribute("projectList",projectList);
 		System.out.println(projectList);
 	    return projectList;
+	}
+	
+	@RequestMapping("/calendar/doModifyCalendar")
+	@ResponseBody
+	public void doModifyCalendar(Model model, @RequestBody Calendar sc) {
+		int calendar_num = sc.getSC_NUM();
+		calendarService.getCalendarList(calendar_num);
+		System.out.println("캘린더 번호 :" + calendar_num );
+		
+		
+		Calendar regsc=sc;
+		calendarService.modifyCalendar(regsc);
+		System.out.println("수정완:"+regsc);
 	}
 	
 }
